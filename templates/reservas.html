@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <title>Reservas</title>
+  <link rel="stylesheet" href="/static/css/styles.css">
+</head>
+<body>
+  <div class="container">
+    <h1>Reservas</h1>
+
+    <h2>Agregar Reserva</h2>
+    <form id="reservas-form">
+      <label for="huesped_id">ID Huésped</label>
+      <input type="number" id="huesped_id" name="huesped_id" required>
+
+      <label for="habitacion_id">ID Habitación</label>
+      <input type="number" id="habitacion_id" name="habitacion_id" required>
+
+      <label for="fecha_ingreso">Fecha Ingreso</label>
+      <input type="date" id="fecha_ingreso" name="fecha_ingreso" required>
+
+      <label for="fecha_salida">Fecha Salida</label>
+      <input type="date" id="fecha_salida" name="fecha_salida" required>
+
+      <button type="submit">Agregar</button>
+    </form>
+
+    <div class="resultado" id="resultado-reservas"></div>
+
+    <h2>Listado de Reservas</h2>
+    <ul id="reservas-list"></ul>
+  </div>
+
+  <script src="/static/js/scripts.js"></script>
+</body>
+</html>

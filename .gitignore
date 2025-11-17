@@ -1,0 +1,42 @@
+# --- Python ---
+__pycache__/
+*.pyc
+*.pyo
+*.pyd
+*.pdb
+*.egg-info/
+*.egg
+
+# --- Entornos virtuales ---
+venv/
+.env
+.env.*
+
+# --- Configuración de IDEs ---
+.vscode/
+.idea/
+
+# --- Archivos de base de datos ---
+*.db
+*.sqlite3
+
+# --- Logs ---
+*.log
+
+# --- Archivos de sistema ---
+.DS_Store
+Thumbs.db
+
+# --- Compilados / temporales ---
+*.bak
+*.swp
+*.tmp
+
+# --- Configuración específica de pgAdmin ---
+pgadmin4.db
+pgadmin4.log
+pgadmin4_session.json
+
+# --- Dependencias ---
+# requirements.txt sí se sube, pero evita subir entornos completos
+pip-wheel-metadata/
