@@ -1,0 +1,22 @@
+name: Deploy to EC2
+
+on:
+  push:
+    branches: [ main ]
+  workflow_dispatch:
+
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+    
+    steps:
+    - name: Checkout code
+      uses: actions/checkout@v3
+    
+    - name: Deploy notification
+      run: |
+        echo "🚀 Deployment process would start here"
+        echo "📋 This will be configured in Sprint 2"
+        echo "⏳ Waiting for EC2 setup from Sprint 1"
+    
+    # Este job se completará en Sprint 2 cuando tengas EC2 configurado

@@ -1,0 +1,21 @@
+name: Project Board Automation
+
+on:
+  issues:
+    types: [opened, assigned, closed, reopened]
+  pull_request:
+    types: [opened, closed, reopened, converted_to_draft, ready_for_review]
+  issue_comment:
+    types: [created]
+
+jobs:
+  update-project:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Log event
+        run: |
+          echo "Event: ${{ github.event_name }}"
+          echo "Action: ${{ github.event.action }}"
+      
+      # El workflow automático del project maneja estos movimientos
+      # Este job es para logging y futuras automatizaciones
