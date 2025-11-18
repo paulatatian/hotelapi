@@ -1,0 +1,15 @@
+{
+  "name": "hotelapp-frontend",
+  "version": "1.0.0",
+  "description": "Frontend de HotelApp con tests en JavaScript",
+  "scripts": {
+    "test": "jest"
+  },
+  "devDependencies": {
+    "jest": "^29.0.0",
+    "jest-environment-jsdom": "^29.0.0"
+  },
+  "jest": {
+    "testEnvironment": "jsdom"
+  }
+}
