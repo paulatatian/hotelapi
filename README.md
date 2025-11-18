@@ -1,8 +1,5 @@
 # 🏨 HotelApp - Gestión de Hotel con FastAPI
 
-Esta aplicación web permite administrar un hotel de manera rápida y sencilla.
-
-![Deploy](https://github.com/paulatatian/hotelapi/actions/workflows/deploy.yml/badge.svg)
 ![AWS EC2](https://img.shields.io/badge/deploy-AWS%20EC2-orange?logo=amazon-aws) 
 ![JavaScript CI](https://github.com/paulatatian/calculadora-cdt/workflows/JavaScript%20CI/badge.svg)
 ![Docker](https://img.shields.io/badge/Docker-Ready-blue?logo=docker)
@@ -12,6 +9,8 @@ Esta aplicación web permite administrar un hotel de manera rápida y sencilla.
 [![PostgreSQL](https://img.shields.io/badge/PostgreSQL-12+-blue.svg)](https://www.postgresql.org/)
 [![License](https://img.shields.io/badge/License-MIT-yellow.svg)](LICENSE)
 
+
+Esta aplicación web permite administrar un hotel de manera rápida y sencilla.
 ---
 
 ## 📋 Tabla de Contenidos
@@ -694,5 +693,6 @@ Este proyecto está bajo la Licencia MIT. Ver el archivo `LICENSE` para más det
 ## 👥 Autores
 
 * **Paula Tatian** - [GitHub](https://github.com/paulatatian)
+
 
 
