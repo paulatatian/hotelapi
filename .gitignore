@@ -1,42 +1,109 @@
-# --- Python ---
+# Entorno virtual de Python
+venv/
+env/
+ENV/
+.venv/
+
+# Archivos de Python compilados
 __pycache__/
-*.pyc
-*.pyo
-*.pyd
-*.pdb
+*.py[cod]
+*$py.class
+*.so
+.Python
+
+# Archivos de distribución / empaquetado
+build/
+develop-eggs/
+dist/
+downloads/
+eggs/
+.eggs/
+lib/
+lib64/
+parts/
+sdist/
+var/
+wheels/
 *.egg-info/
+.installed.cfg
 *.egg
 
-# --- Entornos virtuales ---
-venv/
+# Logs
+*.log
+pip-log.txt
+
+# Unit test / coverage reports
+htmlcov/
+.tox/
+.coverage
+.coverage.*
+.cache
+nosetests.xml
+coverage.xml
+*.cover
+.pytest_cache/
+test/
+
+# Entornos y variables de entorno
 .env
 .env.*
+.env.local
+env.bak/
+venv.bak/
 
-# --- Configuración de IDEs ---
+# IDEs
 .vscode/
 .idea/
-
-# --- Archivos de base de datos ---
-*.db
-*.sqlite3
-
-# --- Logs ---
-*.log
-
-# --- Archivos de sistema ---
-.DS_Store
-Thumbs.db
-
-# --- Compilados / temporales ---
-*.bak
 *.swp
-*.tmp
+*.swo
+*~
+.DS_Store
 
-# --- Configuración específica de pgAdmin ---
+# Base de datos local
+*.db
+*.sqlite
+*.sqlite3
 pgadmin4.db
 pgadmin4.log
 pgadmin4_session.json
 
-# --- Dependencias ---
-# requirements.txt sí se sube, pero evita subir entornos completos
-pip-wheel-metadata/
+# Git
+.git/
+.gitignore
+.gitattributes
+
+# Docker
+.dockerignore
+docker-compose.yml
+.docker/
+
+# Documentación
+README.md
+LICENSE
+*.md
+docs/
+
+# CI/CD
+.github/
+.gitlab-ci.yml
+.travis.yml
+
+# Archivos temporales
+*.tmp
+*.temp
+*.bak
+*.backup
+tmp/
+temp/
+
+# Archivos del sistema operativo
+Thumbs.db
+
+# Archivos de certificados
+*.pem
+*.key
+*.crt
+*.cert
+
+# Node (para GitHub Actions test)
+node_modules/
