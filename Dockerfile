@@ -28,7 +28,7 @@ RUN pip install --upgrade pip && \
 COPY . .
 
 # Crear directorios necesarios si no existen
-RUN mkdir -p static/css static/js templates
+RUN mkdir -p src/static/css src/static/js src/templates
 
 # Exponer el puerto 80
 EXPOSE 80

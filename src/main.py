@@ -3,9 +3,9 @@ from fastapi.staticfiles import StaticFiles
 from fastapi.templating import Jinja2Templates
 from fastapi.middleware.cors import CORSMiddleware
 
-from database import Base, engine
-import models
-from routers import habitaciones, huespedes, reservas
+from src.database import Base, engine
+import src.models as models
+from src.routers import habitaciones, huespedes, reservas
 
 # Crear tablas en la base de datos
 Base.metadata.create_all(bind=engine)
@@ -18,8 +18,8 @@ app.include_router(huespedes.router, prefix="/api")
 app.include_router(reservas.router, prefix="/api")
 
 # Carpeta de archivos estáticos y templates
-app.mount("/static", StaticFiles(directory="static"), name="static")
-templates = Jinja2Templates(directory="templates")
+app.mount("/static", StaticFiles(directory="src/static"), name="static")
+templates = Jinja2Templates(directory="src/templates")
 
 # Rutas para páginas HTML
 @app.get("/", name="Inicio")
