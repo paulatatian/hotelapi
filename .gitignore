@@ -11,6 +11,10 @@ __pycache__/
 *.so
 .Python
 
+
+*.pyc
+*.pyo
+
 # Archivos de distribución / empaquetado
 build/
 develop-eggs/

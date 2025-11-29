@@ -1,0 +1,169 @@
+{
+  "info": {
+    "name": "Hotel API",
+    "_postman_id": "b7c8b6e4-3d2b-4b46-b9da-fcd123456789",
+    "description": "Colección para probar la API del Hotel en AWS",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+  },
+  "item": [
+    {
+      "name": "Habitaciones",
+      "item": [
+        {
+          "name": "Listar Habitaciones",
+          "request": {
+            "method": "GET",
+            "url": "http://52.15.93.93/api/habitaciones/"
+          }
+        },
+        {
+          "name": "Crear Habitacion",
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n    \"numero\": 101,\n    \"tipo\": \"doble\",\n    \"precio\": 150000\n}"
+            },
+            "url": "http://52.15.93.93/api/habitaciones/"
+          }
+        }
+      ]
+    },
+    {
+      "name": "Huespedes",
+      "item": [
+        {
+          "name": "Listar Huespedes",
+          "request": {
+            "method": "GET",
+            "url": "http://52.15.93.93/api/huespedes/"
+          }
+        },
+        {
+          "name": "Crear Huesped",
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n    \"nombre\": \"Juan Perez\",\n    \"correo\": \"juan@example.com\",\n    \"telefono\": \"3001234567\"\n}"
+            },
+            "url": "http://52.15.93.93/api/huespedes/"
+          }
+        },
+        {
+          "name": "Obtener Huesped",
+          "request": {
+            "method": "GET",
+            "url": "http://52.15.93.93/api/huespedes/{{huesped_id}}"
+          }
+        },
+        {
+          "name": "Actualizar Huesped",
+          "request": {
+            "method": "PUT",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n    \"nombre\": \"Juan Actualizado\",\n    \"correo\": \"nuevo@example.com\",\n    \"telefono\": \"3007654321\"\n}"
+            },
+            "url": "http://52.15.93.93/api/huespedes/{{huesped_id}}"
+          }
+        },
+        {
+          "name": "Eliminar Huesped",
+          "request": {
+            "method": "DELETE",
+            "url": "http://52.15.93.93/api/huespedes/{{huesped_id}}"
+          }
+        }
+      ]
+    },
+    {
+      "name": "Reservas",
+      "item": [
+        {
+          "name": "Listar Reservas",
+          "request": {
+            "method": "GET",
+            "url": "http://52.15.93.93/api/reservas/"
+          }
+        },
+        {
+          "name": "Crear Reserva",
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n    \"huesped_id\": 1,\n    \"habitacion_id\": 1,\n    \"fecha_entrada\": \"2025-01-01\",\n    \"fecha_salida\": \"2025-01-05\"\n}"
+            },
+            "url": "http://52.15.93.93/api/reservas/"
+          }
+        },
+        {
+          "name": "Obtener Reserva",
+          "request": {
+            "method": "GET",
+            "url": "http://52.15.93.93/api/reservas/{{reserva_id}}"
+          }
+        },
+        {
+          "name": "Actualizar Reserva",
+          "request": {
+            "method": "PUT",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n    \"huesped_id\": 1,\n    \"habitacion_id\": 1,\n    \"fecha_entrada\": \"2025-02-01\",\n    \"fecha_salida\": \"2025-02-10\"\n}"
+            },
+            "url": "http://52.15.93.93/api/reservas/{{reserva_id}}"
+          }
+        },
+        {
+          "name": "Eliminar Reserva",
+          "request": {
+            "method": "DELETE",
+            "url": "http://52.15.93.93/api/reservas/{{reserva_id}}"
+          }
+        }
+      ]
+    }
+  ],
+  "variable": [
+    {
+      "key": "huesped_id",
+      "value": "1"
+    },
+    {
+      "key": "reserva_id",
+      "value": "1"
+    }
+  ]
+}
