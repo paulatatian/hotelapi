@@ -17,7 +17,7 @@ body {
 
 /* Contenedor centrado */
 .container {
-    max-width: 800px;
+    max-width: 900px;
     margin: 50px auto;
     padding: 40px;
     background: rgba(255, 255, 255, 0.1);
@@ -33,6 +33,12 @@ h1 {
     margin-bottom: 30px;
     text-shadow: 2px 2px 8px rgba(0,0,0,0.3);
     animation: fadeInDown 1s ease-out;
+}
+
+h2 {
+    font-size: 1.5rem;
+    margin: 20px 0;
+    text-shadow: 1px 1px 4px rgba(0,0,0,0.2);
 }
 
 @keyframes fadeInDown {
@@ -54,6 +60,7 @@ nav a {
     border-radius: 8px;
     font-weight: bold;
     transition: all 0.3s ease;
+    display: inline-block;
 }
 
 nav a:hover {
@@ -71,6 +78,13 @@ form {
     border-radius: 12px;
     box-shadow: 0 4px 15px rgba(0,0,0,0.2);
     animation: fadeIn 1s ease;
+}
+
+form label {
+    display: block;
+    text-align: left;
+    margin-bottom: 5px;
+    font-weight: bold;
 }
 
 form input, form select {
@@ -105,16 +119,20 @@ form button:hover {
 ul {
     list-style: none;
     padding: 0;
-    max-width: 600px;
+    max-width: 800px;
     margin: 20px auto;
 }
 
 li {
     background: rgba(0,0,0,0.2);
-    padding: 10px 15px;
+    padding: 15px;
     margin-bottom: 10px;
     border-radius: 8px;
     transition: all 0.3s ease;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-wrap: wrap;
 }
 
 li:hover {
@@ -122,8 +140,67 @@ li:hover {
     transform: translateX(5px);
 }
 
+li span {
+    flex: 1;
+    text-align: left;
+    margin-right: 10px;
+}
+
+/* Botones de acción en listas */
+.actions {
+    display: flex;
+    gap: 10px;
+}
+
+.btn-edit, .btn-delete {
+    padding: 8px 15px;
+    border: none;
+    border-radius: 5px;
+    font-weight: bold;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    font-size: 0.9rem;
+}
+
+.btn-edit {
+    background: #4CAF50;
+    color: white;
+}
+
+.btn-edit:hover {
+    background: #45a049;
+    transform: scale(1.05);
+}
+
+.btn-delete {
+    background: #f44336;
+    color: white;
+}
+
+.btn-delete:hover {
+    background: #da190b;
+    transform: scale(1.05);
+}
+
 /* Animación general */
 @keyframes fadeIn {
     0% { opacity: 0; }
     100% { opacity: 1; }
+}
+
+/* Responsive */
+@media (max-width: 600px) {
+    li {
+        flex-direction: column;
+        align-items: flex-start;
+    }
+    
+    li span {
+        margin-bottom: 10px;
+    }
+    
+    .actions {
+        width: 100%;
+        justify-content: flex-end;
+    }
 }

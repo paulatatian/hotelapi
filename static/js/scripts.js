@@ -33,7 +33,9 @@ if (formHab) {
     });
 }
 
-listarHabitaciones();
+if (document.getElementById('habitaciones-list')) {
+    listarHabitaciones();
+}
 
 
 // ------------------ HUESPEDES ------------------
@@ -46,9 +48,38 @@ async function listarHuespedes() {
         list.innerHTML = '';
         data.forEach(h => {
             const li = document.createElement('li');
-            li.textContent = `ID: ${h.id} | ${h.nombre} | ${h.email} | ${h.telefono}`;
+            li.innerHTML = `
+                <span>ID: ${h.id} | ${h.nombre} | ${h.email} | ${h.telefono}</span>
+                <div class="actions">
+                    <button class="btn-edit" onclick="editarHuesped(${h.id})">Editar</button>
+                    <button class="btn-delete" onclick="eliminarHuesped(${h.id})">Eliminar</button>
+                </div>
+            `;
             list.appendChild(li);
         });
+    }
+}
+
+async function editarHuesped(id) {
+    const res = await fetch(`/api/huespedes/${id}`);
+    const huesped = await res.json();
+
+    document.getElementById('nombre').value = huesped.nombre;
+    document.getElementById('email').value = huesped.email;
+    document.getElementById('telefono').value = huesped.telefono;
+
+    const formHues = document.getElementById('huespedes-form');
+    const submitBtn = formHues.querySelector('button[type="submit"]');
+    submitBtn.textContent = 'Actualizar Huésped';
+    submitBtn.dataset.editId = id;
+}
+
+async function eliminarHuesped(id) {
+    if (confirm('¿Estás seguro de eliminar este huésped?')) {
+        await fetch(`/api/huespedes/${id}`, {
+            method: 'DELETE'
+        });
+        listarHuespedes();
     }
 }
 
@@ -60,18 +91,35 @@ if (formHues) {
         const email = document.getElementById('email').value;
         const telefono = document.getElementById('telefono').value;
 
-        await fetch('/api/huespedes/', {
-            method: 'POST',
-            headers: { 'Content-Type': 'application/json' },
-            body: JSON.stringify({ nombre, email, telefono })
-        });
+        const submitBtn = formHues.querySelector('button[type="submit"]');
+        const editId = submitBtn.dataset.editId;
+
+        if (editId) {
+            // Actualizar
+            await fetch(`/api/huespedes/${editId}`, {
+                method: 'PUT',
+                headers: { 'Content-Type': 'application/json' },
+                body: JSON.stringify({ nombre, email, telefono })
+            });
+            submitBtn.textContent = 'Agregar';
+            delete submitBtn.dataset.editId;
+        } else {
+            // Crear nuevo
+            await fetch('/api/huespedes/', {
+                method: 'POST',
+                headers: { 'Content-Type': 'application/json' },
+                body: JSON.stringify({ nombre, email, telefono })
+            });
+        }
 
         listarHuespedes();
         formHues.reset();
     });
 }
 
-listarHuespedes();
+if (document.getElementById('huespedes-list')) {
+    listarHuespedes();
+}
 
 
 // ------------------ RESERVAS ------------------
@@ -84,9 +132,40 @@ async function listarReservas() {
         list.innerHTML = '';
         data.forEach(r => {
             const li = document.createElement('li');
-            li.textContent = `ID: ${r.id} | Huésped: ${r.huesped_id} | Habitación: ${r.habitacion_id} | Ingreso: ${r.fecha_ingreso} | Salida: ${r.fecha_salida}`;
+            li.innerHTML = `
+                <span>ID: ${r.id} | Huésped: ${r.huesped_id} | Habitación: ${r.habitacion_id} | 
+                Ingreso: ${r.fecha_ingreso} | Salida: ${r.fecha_salida}</span>
+                <div class="actions">
+                    <button class="btn-edit" onclick="editarReserva(${r.id})">Editar</button>
+                    <button class="btn-delete" onclick="eliminarReserva(${r.id})">Eliminar</button>
+                </div>
+            `;
             list.appendChild(li);
         });
+    }
+}
+
+async function editarReserva(id) {
+    const res = await fetch(`/api/reservas/${id}`);
+    const reserva = await res.json();
+
+    document.getElementById('huesped_id').value = reserva.huesped_id;
+    document.getElementById('habitacion_id').value = reserva.habitacion_id;
+    document.getElementById('fecha_ingreso').value = reserva.fecha_ingreso;
+    document.getElementById('fecha_salida').value = reserva.fecha_salida;
+
+    const formRes = document.getElementById('reservas-form');
+    const submitBtn = formRes.querySelector('button[type="submit"]');
+    submitBtn.textContent = 'Actualizar Reserva';
+    submitBtn.dataset.editId = id;
+}
+
+async function eliminarReserva(id) {
+    if (confirm('¿Estás seguro de eliminar esta reserva?')) {
+        await fetch(`/api/reservas/${id}`, {
+            method: 'DELETE'
+        });
+        listarReservas();
     }
 }
 
@@ -99,15 +178,38 @@ if (formRes) {
         const fecha_ingreso = document.getElementById('fecha_ingreso').value;
         const fecha_salida = document.getElementById('fecha_salida').value;
 
-        await fetch('/api/reservas/', {
-            method: 'POST',
-            headers: { 'Content-Type': 'application/json' },
-            body: JSON.stringify({ huesped_id, habitacion_id, fecha_ingreso, fecha_salida })
-        });
+        const submitBtn = formRes.querySelector('button[type="submit"]');
+        const editId = submitBtn.dataset.editId;
+
+        if (editId) {
+            // Actualizar
+            await fetch(`/api/reservas/${editId}`, {
+                method: 'PUT',
+                headers: { 'Content-Type': 'application/json' },
+                body: JSON.stringify({ huesped_id, habitacion_id, fecha_ingreso, fecha_salida })
+            });
+            submitBtn.textContent = 'Agregar';
+            delete submitBtn.dataset.editId;
+        } else {
+            // Crear nueva
+            await fetch('/api/reservas/', {
+                method: 'POST',
+                headers: { 'Content-Type': 'application/json' },
+                body: JSON.stringify({ huesped_id, habitacion_id, fecha_ingreso, fecha_salida })
+            });
+        }
 
         listarReservas();
         formRes.reset();
     });
 }
 
-listarReservas();
+if (document.getElementById('reservas-list')) {
+    listarReservas();
+}
+
+// Hacer funciones globales para onclick
+window.editarHuesped = editarHuesped;
+window.eliminarHuesped = eliminarHuesped;
+window.editarReserva = editarReserva;
+window.eliminarReserva = eliminarReserva;
